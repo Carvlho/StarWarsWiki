@@ -1,7 +1,7 @@
 export default {
   colors: {
     background: "#121215",
-    background_yellow: "#FFC107",
+    background_yellow: "#FFE81F",
 
     white: "#FFFFFF",
     light: "#e5e5e5",
