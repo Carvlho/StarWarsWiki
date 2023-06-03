@@ -3,6 +3,6 @@ import Home from "./Home";
 import PeoplesList from "./PeoplesList";
 import PeoplesDetails from "./PeoplesDetails";
 
-import Planets from "./Planets";
+import PlanetsList from "./PlanetsList";
 
-export { Home, PeoplesList, PeoplesDetails, Planets };
+export { Home, PeoplesList, PeoplesDetails, PlanetsList };
