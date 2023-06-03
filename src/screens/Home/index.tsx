@@ -1,3 +1,7 @@
+import { useNavigation } from "@react-navigation/native";
+
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
 import StarWarsLogo from "../../assets/StarWarsLogo.png";
 
 import IconPeoples from "../../assets/IconPeoples.png";
@@ -9,15 +13,29 @@ import IconFilms from "../../assets/IconFilms.png";
 
 import ButtonCategories from "../../components/ButtonCategories";
 
+import { RootStackParams } from "../../utils/RootStackParams";
+
 import { Container, ContainerButtons, Logo } from "./styles";
 
+type ScreenStack = NativeStackNavigationProp<RootStackParams, "PeoplesList">;
+
 export default function Home() {
+  const navigation = useNavigation<ScreenStack>();
+
+  function handleNavigatePeoples() {
+    navigation.navigate("PeoplesList");
+  }
+
   return (
     <Container>
       <Logo source={StarWarsLogo} />
 
       <ContainerButtons>
-        <ButtonCategories title="Pessoas" icon={IconPeoples} />
+        <ButtonCategories
+          title="Pessoas"
+          icon={IconPeoples}
+          onPress={handleNavigatePeoples}
+        />
         <ButtonCategories title="Planetas" icon={IconPlanets} />
         <ButtonCategories title="Espécies" icon={IconSpecies} />
         <ButtonCategories title="Aeronaves" icon={IconStarships} />

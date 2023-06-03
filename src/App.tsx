@@ -11,7 +11,7 @@ import {
 
 import theme from "./global/styles/theme";
 
-import PeoplesList from "./screens/PeoplesList";
+import { AppRoutes } from "./routes/app.routes";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,7 +27,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="light" backgroundColor="transparent" translucent />
-      <PeoplesList />
+      <AppRoutes />
     </ThemeProvider>
   );
 }
