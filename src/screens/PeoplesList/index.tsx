@@ -27,6 +27,8 @@ export default function PeoplesList() {
   const [listPeoples, setListPeoples] = useState<PeoplesProps[]>([]);
   const [fadeAnim] = useState(new Animated.Value(0));
 
+  const [maxPages, setMaxPages] = useState(0);
+
   const { fetch, loading, setLoading } = useFetch({
     route: `people/?page=${page}`,
   });
@@ -45,7 +47,9 @@ export default function PeoplesList() {
 
     fetch()
       .then((response) => {
-        const { results } = response?.data;
+        const { count, results } = response?.data;
+
+        setMaxPages(Math.ceil(count / 10));
 
         setListPeoples(results);
       })
@@ -93,6 +97,7 @@ export default function PeoplesList() {
                 prevPage={handlePreviusPage}
                 nextPage={handleNextPage}
                 currentPage={page}
+                maxPages={maxPages}
               />
             )}
           />

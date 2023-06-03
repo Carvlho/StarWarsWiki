@@ -11,13 +11,17 @@ interface FooterProps {
   prevPage: () => void;
   nextPage: () => void;
   currentPage: number;
+  maxPages: number;
 }
 
 export default function Footer({
   prevPage,
   nextPage,
   currentPage,
+  maxPages,
 }: FooterProps) {
+  console.log(maxPages);
+
   return (
     <FooterContainer>
       <ContainerItens>
@@ -31,7 +35,7 @@ export default function Footer({
         <FooterText>{currentPage}</FooterText>
       </ContainerItens>
       <ContainerItens>
-        {currentPage != 9 && (
+        {currentPage != maxPages && (
           <FooterButton onPress={nextPage}>
             <Icon name="arrow-right" />
           </FooterButton>
