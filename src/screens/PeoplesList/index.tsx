@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Animated } from "react-native";
+import { Animated } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import useFetch from "../../hooks/useFetch";
 
@@ -9,9 +11,18 @@ import Footer from "../../components/FooterList";
 
 import { PeoplesProps } from "./interfacePeople";
 
+import { RootStackParams } from "../../utils/RootStackParams";
+
 import { Container, ContainerLoading, List, LoadingIndicator } from "./styles";
 
+type screensStack = NativeStackNavigationProp<
+  RootStackParams,
+  "PeoplesDetails"
+>;
+
 export default function PeoplesList() {
+  const navigation = useNavigation<screensStack>();
+
   const [page, setPage] = useState(1);
   const [listPeoples, setListPeoples] = useState<PeoplesProps[]>([]);
   const [fadeAnim] = useState(new Animated.Value(0));
@@ -52,9 +63,13 @@ export default function PeoplesList() {
     }).start();
   }, [loading]);
 
+  function handleDetails(item: PeoplesProps) {
+    navigation.navigate("PeoplesDetails", { details: item });
+  }
+
   return (
     <Container>
-      <Header title="Peoples" />
+      <Header title="Pessoas" />
 
       {loading ? (
         <ContainerLoading>
@@ -67,7 +82,12 @@ export default function PeoplesList() {
           <List
             keyExtractor={(item, index) => index.toString()}
             data={listPeoples}
-            renderItem={({ item }: any) => <CardItem name={item.name} />}
+            renderItem={({ item }: any) => (
+              <CardItem
+                name={item.name}
+                handleDetails={() => handleDetails(item)}
+              />
+            )}
             ListFooterComponent={() => (
               <Footer
                 prevPage={handlePreviusPage}

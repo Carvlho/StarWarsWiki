@@ -1,4 +1,5 @@
 import Home from "./Home";
 import PeoplesList from "./PeoplesList";
+import PeoplesDetails from "./PeoplesDetails";
 
-export { Home, PeoplesList };
+export { Home, PeoplesList, PeoplesDetails };
