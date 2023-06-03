@@ -179,44 +179,36 @@ export default function PeoplesDetails() {
           {films[0] && (
             <ContainerInformation>
               <TitleDetail>Filmes:</TitleDetail>
-              <ContainerDetail>
-                {films.map((film) => (
-                  <TextDetail key={film}>{film}</TextDetail>
-                ))}
-              </ContainerDetail>
+              {films.map((film) => (
+                <TextDetail key={film}>{film}</TextDetail>
+              ))}
             </ContainerInformation>
           )}
 
           {species[0] && (
             <ContainerInformation>
               <TitleDetail>Espécies:</TitleDetail>
-              <ContainerDetail>
-                {species.map((specie) => (
-                  <TextDetail key={specie}>{specie}</TextDetail>
-                ))}
-              </ContainerDetail>
+              {species.map((specie) => (
+                <TextDetail key={specie}>{specie}</TextDetail>
+              ))}
             </ContainerInformation>
           )}
 
           {vehicles[0] && (
             <ContainerInformation>
               <TitleDetail>Veículos:</TitleDetail>
-              <ContainerDetail>
-                {vehicles.map((vehicle) => (
-                  <TextDetail key={vehicle}>{vehicle}</TextDetail>
-                ))}
-              </ContainerDetail>
+              {vehicles.map((vehicle) => (
+                <TextDetail key={vehicle}>{vehicle}</TextDetail>
+              ))}
             </ContainerInformation>
           )}
 
           {starships[0] && (
             <ContainerInformation>
               <TitleDetail>Naves Estelares:</TitleDetail>
-              <ContainerDetail>
-                {starships.map((starship) => (
-                  <TextDetail key={starship}>{starship}</TextDetail>
-                ))}
-              </ContainerDetail>
+              {starships.map((starship) => (
+                <TextDetail key={starship}>{starship}</TextDetail>
+              ))}
             </ContainerInformation>
           )}
         </>
