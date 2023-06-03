@@ -17,13 +17,17 @@ import { RootStackParams } from "../../utils/RootStackParams";
 
 import { Container, ContainerButtons, Logo } from "./styles";
 
-type ScreenStack = NativeStackNavigationProp<RootStackParams, "PeoplesList">;
+type ScreenStack = NativeStackNavigationProp<RootStackParams>;
 
 export default function Home() {
   const navigation = useNavigation<ScreenStack>();
 
   function handleNavigatePeoples() {
     navigation.navigate("PeoplesList");
+  }
+
+  function handleNavigationPlanets() {
+    navigation.navigate("PlanetsList");
   }
 
   return (
@@ -36,7 +40,11 @@ export default function Home() {
           icon={IconPeoples}
           onPress={handleNavigatePeoples}
         />
-        <ButtonCategories title="Planetas" icon={IconPlanets} />
+        <ButtonCategories
+          title="Planetas"
+          icon={IconPlanets}
+          onPress={handleNavigationPlanets}
+        />
         <ButtonCategories title="Espécies" icon={IconSpecies} />
         <ButtonCategories title="Aeronaves" icon={IconStarships} />
         <ButtonCategories title="Veículos" icon={IconVehicles} />

@@ -5,4 +5,6 @@ export type RootStackParams = {
   PeoplesDetails: {
     details: any;
   };
+
+  PlanetsList: undefined;
 };
