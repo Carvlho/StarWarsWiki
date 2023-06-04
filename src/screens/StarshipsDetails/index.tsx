@@ -48,7 +48,7 @@ export default function StarshipsDetails() {
     }
   }
 
-  async function getPeoplesTitle() {
+  async function getPilotsTitle() {
     try {
       const urls = details?.pilots;
       const pilotsTitle: any = [];
@@ -70,7 +70,7 @@ export default function StarshipsDetails() {
       try {
         setIsLoading(true);
 
-        await Promise.all([getFilmTitle(), getPeoplesTitle()]);
+        await Promise.all([getFilmTitle(), getPilotsTitle()]);
 
         setIsLoading(false);
       } catch (error) {
