@@ -71,7 +71,9 @@ export default function FilmsList() {
     }).start();
   }, [loading]);
 
-  function handleDetails(item: FilmsProps) {}
+  function handleDetails(item: FilmsProps) {
+    navigation.navigate("FilmsDetails", { details: item });
+  }
 
   return (
     <ContainerFilms>

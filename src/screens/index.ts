@@ -1,4 +1,5 @@
 import FilmsList from "./FilmsList";
+import FilmsDetails from "./FilmsDetails";
 
 import Home from "./Home";
 
@@ -19,6 +20,7 @@ import VehiclesDetails from "./VehiclesDetails";
 
 export {
   FilmsList,
+  FilmsDetails,
   Home,
   PeoplesList,
   PeoplesDetails,
