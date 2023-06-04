@@ -21,7 +21,7 @@ export default function Footer({
   maxPages,
 }: FooterProps) {
   return (
-    <FooterContainer>
+    <FooterContainer testID="footer_list">
       <ContainerItens>
         {currentPage != 1 && (
           <FooterButton onPress={prevPage}>
@@ -34,7 +34,7 @@ export default function Footer({
       </ContainerItens>
       <ContainerItens>
         {currentPage != maxPages && (
-          <FooterButton onPress={nextPage}>
+          <FooterButton onPress={nextPage} testID="btn-next-page">
             <Icon name="arrow-right" />
           </FooterButton>
         )}
