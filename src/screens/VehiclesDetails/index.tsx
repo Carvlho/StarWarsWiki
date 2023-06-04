@@ -11,7 +11,7 @@ import {
   ContainerDetail,
   ContainerDetails,
   ContainerLoading,
-  ContainerStarshipsDetails,
+  ContainerVehiclesDetails,
   LoadingIndicator,
   RelatedItemText,
   RelatedItemTitle,
@@ -21,7 +21,7 @@ import {
   TitleDetail,
 } from "./styles";
 
-export default function StarshipsDetails() {
+export default function VehiclesDetails() {
   const route = useRoute<any>();
   const { details } = route.params;
 
@@ -92,7 +92,7 @@ export default function StarshipsDetails() {
   }, [isLoading]);
 
   return (
-    <ContainerStarshipsDetails>
+    <ContainerVehiclesDetails>
       <Header title="Detalhes" />
 
       <CardDetails>
@@ -134,18 +134,8 @@ export default function StarshipsDetails() {
           </ContainerDetail>
 
           <ContainerDetail>
-            <TitleDetail>Avaliação hiperdrive:</TitleDetail>
-            <TextDetail>{details?.hyperdrive_rating}</TextDetail>
-          </ContainerDetail>
-
-          <ContainerDetail>
-            <TitleDetail>MGLT:</TitleDetail>
-            <TextDetail>{details?.MGLT}</TextDetail>
-          </ContainerDetail>
-
-          <ContainerDetail>
-            <TitleDetail>Aula de nave estelar:</TitleDetail>
-            <TextDetail>{details?.starship_class}</TextDetail>
+            <TitleDetail>Classe de veículo:</TitleDetail>
+            <TextDetail>{details?.vehicle_class}</TextDetail>
           </ContainerDetail>
 
           <ContainerDetail>
@@ -185,6 +175,6 @@ export default function StarshipsDetails() {
           )}
         </Animated.View>
       )}
-    </ContainerStarshipsDetails>
+    </ContainerVehiclesDetails>
   );
 }

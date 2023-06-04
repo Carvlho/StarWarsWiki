@@ -12,6 +12,9 @@ import SpeciesDetails from "./SpeciesDetails";
 import StarshipsList from "./StarshipsLists";
 import StarshipsDetails from "./StarshipsDetails";
 
+import VehiclesList from "./VehiclesList";
+import VehiclesDetails from "./VehiclesDetails";
+
 export {
   Home,
   PeoplesList,
@@ -22,4 +25,6 @@ export {
   SpeciesDetails,
   StarshipsList,
   StarshipsDetails,
+  VehiclesList,
+  VehiclesDetails,
 };
