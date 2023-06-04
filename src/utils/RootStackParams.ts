@@ -20,4 +20,6 @@ export type RootStackParams = {
   StarshipsDetails: {
     details: any;
   };
+
+  VehiclesList: undefined;
 };
