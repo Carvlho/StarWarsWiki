@@ -30,6 +30,10 @@ export default function Home() {
     navigation.navigate("PlanetsList");
   }
 
+  function handleNavigationSpecies() {
+    navigation.navigate("SpeciesList");
+  }
+
   return (
     <Container>
       <Logo source={StarWarsLogo} />
@@ -45,7 +49,11 @@ export default function Home() {
           icon={IconPlanets}
           onPress={handleNavigationPlanets}
         />
-        <ButtonCategories title="Espécies" icon={IconSpecies} />
+        <ButtonCategories
+          title="Espécies"
+          icon={IconSpecies}
+          onPress={handleNavigationSpecies}
+        />
         <ButtonCategories title="Aeronaves" icon={IconStarships} />
         <ButtonCategories title="Veículos" icon={IconVehicles} />
         <ButtonCategories title="Filmes" icon={IconFilms} />

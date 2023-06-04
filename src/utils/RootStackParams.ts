@@ -10,4 +10,6 @@ export type RootStackParams = {
   PlanetsDetails: {
     details: any;
   };
+
+  SpeciesList: undefined;
 };

@@ -7,6 +7,7 @@ import {
   PeoplesList,
   PlanetsList,
   PlanetsDetails,
+  SpeciesList,
 } from "../screens";
 
 import { RootStackParams } from "../utils/RootStackParams";
@@ -36,6 +37,11 @@ export function AppRoutes() {
         <Screen
           name="PlanetsDetails"
           component={PlanetsDetails}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="SpeciesList"
+          component={SpeciesList}
           options={{ headerShown: false }}
         />
       </Navigator>
