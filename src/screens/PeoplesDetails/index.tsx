@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import { useRoute } from "@react-navigation/native";
 
 import api from "../../services/api";
@@ -174,11 +174,11 @@ export default function PeoplesDetails() {
       </CardDetails>
 
       {isLoading ? (
-        <ContainerLoading>
+        <ContainerLoading testID="loading-view">
           <ActivityIndicator size="large" color="white" />
         </ContainerLoading>
       ) : (
-        <>
+        <View testID="relatedThings-view">
           {films[0] && (
             <RelatedItems>
               <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
@@ -214,7 +214,7 @@ export default function PeoplesDetails() {
               ))}
             </RelatedItems>
           )}
-        </>
+        </View>
       )}
     </ContainerPeoplesDetails>
   );

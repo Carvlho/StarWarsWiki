@@ -73,7 +73,7 @@ export default function PeoplesList() {
       <Header title="Pessoas" />
 
       {loading ? (
-        <ContainerLoading>
+        <ContainerLoading testID="loading-view">
           <LoadingIndicator size="large" />
         </ContainerLoading>
       ) : (
@@ -81,6 +81,7 @@ export default function PeoplesList() {
           style={{ width: "100%", opacity: fadeAnim, paddingBottom: 120 }}
         >
           <List
+            testID="PeoplesList"
             keyExtractor={(item, index) => index.toString()}
             data={listPeoples}
             renderItem={({ item }: any) => (

@@ -6,5 +6,9 @@ type CardDetailsProps = {
 };
 
 export default function CardDetails({ children }: CardDetailsProps) {
-  return <ContainerCardDetails>{children}</ContainerCardDetails>;
+  return (
+    <ContainerCardDetails testID="card-details">
+      {children}
+    </ContainerCardDetails>
+  );
 }
