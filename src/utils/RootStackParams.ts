@@ -15,4 +15,6 @@ export type RootStackParams = {
   SpeciesDetails: {
     details: any;
   };
+
+  StarshipsList: undefined;
 };
