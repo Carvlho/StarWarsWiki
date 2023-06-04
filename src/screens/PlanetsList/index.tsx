@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { Animated } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { Text } from "react-native";
 
 import useFetch from "../../hooks/useFetch";
 
 import Header from "../../components/Header";
 import CardItem from "../../components/CardItem";
 import Footer from "../../components/FooterList";
+
+import { RootStackParams } from "../../utils/RootStackParams";
 
 import {
   ContainerLoading,
@@ -21,7 +22,11 @@ interface PlanetsProps {
   name: string;
 }
 
+type screensStack = NativeStackNavigationProp<RootStackParams>;
+
 export default function PlanetsList() {
+  const navigation = useNavigation<screensStack>();
+
   const [page, setPage] = useState(1);
   const [listPlanets, setListPlanets] = useState<PlanetsProps[]>([]);
   const [fadeAnim] = useState(new Animated.Value(0));
@@ -66,7 +71,9 @@ export default function PlanetsList() {
     }).start();
   }, [loading]);
 
-  function handleDetails() {}
+  function handleDetails(item: PlanetsProps) {
+    navigation.navigate("PlanetsDetails", { details: item });
+  }
 
   return (
     <ContainerPlanets>
@@ -86,7 +93,7 @@ export default function PlanetsList() {
             renderItem={({ item }: any) => (
               <CardItem
                 name={item.name}
-                handleDetails={() => handleDetails()}
+                handleDetails={() => handleDetails(item)}
               />
             )}
             ListFooterComponent={() => (

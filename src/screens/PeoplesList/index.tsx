@@ -15,10 +15,7 @@ import { RootStackParams } from "../../utils/RootStackParams";
 
 import { Container, ContainerLoading, List, LoadingIndicator } from "./styles";
 
-type screensStack = NativeStackNavigationProp<
-  RootStackParams,
-  "PeoplesDetails"
->;
+type screensStack = NativeStackNavigationProp<RootStackParams>;
 
 export default function PeoplesList() {
   const navigation = useNavigation<screensStack>();

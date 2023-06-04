@@ -20,8 +20,6 @@ export default function Footer({
   currentPage,
   maxPages,
 }: FooterProps) {
-  console.log(maxPages);
-
   return (
     <FooterContainer>
       <ContainerItens>

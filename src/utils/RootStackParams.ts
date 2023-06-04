@@ -7,4 +7,7 @@ export type RootStackParams = {
   };
 
   PlanetsList: undefined;
+  PlanetsDetails: {
+    details: any;
+  };
 };

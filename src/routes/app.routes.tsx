@@ -1,7 +1,13 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { Home, PeoplesDetails, PeoplesList, PlanetsList } from "../screens";
+import {
+  Home,
+  PeoplesDetails,
+  PeoplesList,
+  PlanetsList,
+  PlanetsDetails,
+} from "../screens";
 
 import { RootStackParams } from "../utils/RootStackParams";
 
@@ -25,6 +31,11 @@ export function AppRoutes() {
         <Screen
           name="PlanetsList"
           component={PlanetsList}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="PlanetsDetails"
+          component={PlanetsDetails}
           options={{ headerShown: false }}
         />
       </Navigator>
