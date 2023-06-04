@@ -22,7 +22,11 @@ interface StarshipsProps {
   name: string;
 }
 
+type screensStack = NativeStackNavigationProp<RootStackParams>;
+
 export default function StarshipsList() {
+  const navigation = useNavigation<screensStack>();
+
   const [page, setPage] = useState(1);
   const [listPlanets, setListPlanets] = useState<StarshipsProps[]>([]);
   const [fadeAnim] = useState(new Animated.Value(0));
@@ -67,8 +71,9 @@ export default function StarshipsList() {
     }).start();
   }, [loading]);
 
-  function handleDetails() {}
-
+  function handleDetails(item: StarshipsProps) {
+    navigation.navigate("StarshipsDetails", { details: item });
+  }
   return (
     <ContainerPlanets>
       <Header title="Naves Estelares" />
@@ -87,7 +92,7 @@ export default function StarshipsList() {
             renderItem={({ item }: any) => (
               <CardItem
                 name={item.name}
-                handleDetails={() => handleDetails()}
+                handleDetails={() => handleDetails(item)}
               />
             )}
             ListFooterComponent={() => (

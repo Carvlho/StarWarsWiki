@@ -10,6 +10,7 @@ import SpeciesList from "./SpeciesList";
 import SpeciesDetails from "./SpeciesDetails";
 
 import StarshipsList from "./StarshipsLists";
+import StarshipsDetails from "./StarshipsDetails";
 
 export {
   Home,
@@ -20,4 +21,5 @@ export {
   SpeciesList,
   SpeciesDetails,
   StarshipsList,
+  StarshipsDetails,
 };
