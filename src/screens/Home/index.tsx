@@ -45,7 +45,7 @@ export default function Home() {
   function handleNavigationFilms() {
     navigation.navigate("FilmsList");
   }
-
+  
   return (
     <Container>
       <Logo source={StarWarsLogo} />
