@@ -13,6 +13,8 @@ import {
   StarshipsDetails,
   VehiclesList,
   VehiclesDetails,
+  FilmsList,
+  FilmsDetails,
 } from "../screens";
 
 import { RootStackParams } from "../utils/RootStackParams";
@@ -23,6 +25,16 @@ export function AppRoutes() {
   return (
     <NavigationContainer>
       <Navigator initialRouteName="Home">
+        <Screen
+          name="FilmsList"
+          component={FilmsList}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="FilmsDetails"
+          component={FilmsDetails}
+          options={{ headerShown: false }}
+        />
         <Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Screen
           name="PeoplesList"

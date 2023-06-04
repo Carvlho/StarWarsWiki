@@ -1,3 +1,6 @@
+import FilmsList from "./FilmsList";
+import FilmsDetails from "./FilmsDetails";
+
 import Home from "./Home";
 
 import PeoplesList from "./PeoplesList";
@@ -16,6 +19,8 @@ import VehiclesList from "./VehiclesList";
 import VehiclesDetails from "./VehiclesDetails";
 
 export {
+  FilmsList,
+  FilmsDetails,
   Home,
   PeoplesList,
   PeoplesDetails,
