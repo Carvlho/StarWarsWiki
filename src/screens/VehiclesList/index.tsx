@@ -71,7 +71,9 @@ export default function VehiclesList() {
     }).start();
   }, [loading]);
 
-  function handleDetails(item: VehiclesProps) {}
+  function handleDetails(item: VehiclesProps) {
+    navigation.navigate("VehiclesDetails", { details: item });
+  }
 
   return (
     <ContainerVehicles>

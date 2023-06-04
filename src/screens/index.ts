@@ -13,6 +13,7 @@ import StarshipsList from "./StarshipsLists";
 import StarshipsDetails from "./StarshipsDetails";
 
 import VehiclesList from "./VehiclesList";
+import VehiclesDetails from "./VehiclesDetails";
 
 export {
   Home,
@@ -25,4 +26,5 @@ export {
   StarshipsList,
   StarshipsDetails,
   VehiclesList,
+  VehiclesDetails,
 };

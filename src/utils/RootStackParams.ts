@@ -22,4 +22,7 @@ export type RootStackParams = {
   };
 
   VehiclesList: undefined;
+  VehiclesDetails: {
+    details: any;
+  };
 };
