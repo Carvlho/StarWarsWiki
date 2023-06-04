@@ -7,6 +7,7 @@ import PlanetsList from "./PlanetsList";
 import PlanetsDetails from "./PlanetsDetails";
 
 import SpeciesList from "./SpeciesList";
+import SpeciesDetails from "./SpeciesDetails";
 
 export {
   Home,
@@ -15,4 +16,5 @@ export {
   PlanetsList,
   PlanetsDetails,
   SpeciesList,
+  SpeciesDetails,
 };

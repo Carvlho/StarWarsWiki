@@ -12,4 +12,7 @@ export type RootStackParams = {
   };
 
   SpeciesList: undefined;
+  SpeciesDetails: {
+    details: any;
+  };
 };

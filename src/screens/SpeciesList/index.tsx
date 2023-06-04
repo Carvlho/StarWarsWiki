@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { Animated } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import useFetch from "../../hooks/useFetch";
 
 import Header from "../../components/Header";
 import CardItem from "../../components/CardItem";
 import Footer from "../../components/FooterList";
+
+import { RootStackParams } from "../../utils/RootStackParams";
 
 import {
   ContainerLoading,
@@ -18,7 +22,11 @@ interface SpeciesProps {
   name: string;
 }
 
+type screensStack = NativeStackNavigationProp<RootStackParams>;
+
 export default function SpeciesList() {
+  const navigation = useNavigation<screensStack>();
+
   const [page, setPage] = useState(1);
   const [listSpecies, setListSpecies] = useState<SpeciesProps[]>([]);
   const [fadeAnim] = useState(new Animated.Value(0));
@@ -63,7 +71,9 @@ export default function SpeciesList() {
     }).start();
   }, [loading]);
 
-  function handleDetails(item: SpeciesProps) {}
+  function handleDetails(item: SpeciesProps) {
+    navigation.navigate("SpeciesDetails", { details: item });
+  }
 
   return (
     <ContainerSpecies>
