@@ -14,8 +14,8 @@ export default function Header({ title }: HeaderProps) {
   }
 
   return (
-    <Container>
-      <ButtonIcon onPress={handleGoBack}>
+    <Container testID="Header">
+      <ButtonIcon testID="btnGoBack" onPress={handleGoBack}>
         <Icon name="arrow-left" />
       </ButtonIcon>
       <Title>{title}</Title>
