@@ -5,14 +5,18 @@ import { useRoute } from "@react-navigation/native";
 import api from "../../services/api";
 
 import Header from "../../components/Header";
+import CardDetails from "../../components/CardDetails";
 
 import {
   ContainerDetail,
   ContainerDetails,
-  ContainerInformation,
   ContainerLoading,
   ContainerPeoplesDetails,
+  RelatedItemText,
+  RelatedItemTitle,
+  RelatedItems,
   TextDetail,
+  Title,
   TitleDetail,
 } from "./styles";
 
@@ -128,47 +132,46 @@ export default function PeoplesDetails() {
   return (
     <ContainerPeoplesDetails>
       <Header title="Detalhes" />
-      <ContainerDetails>
-        <ContainerDetail>
-          <TitleDetail>Nome:</TitleDetail>
-          <TextDetail>{details?.name}</TextDetail>
-        </ContainerDetail>
+      <CardDetails>
+        <Title>{details?.name}</Title>
 
-        <ContainerDetail>
-          <TitleDetail>Altura:</TitleDetail>
-          <TextDetail>{details?.height} cm</TextDetail>
-        </ContainerDetail>
+        <ContainerDetails>
+          <ContainerDetail>
+            <TitleDetail>Altura:</TitleDetail>
+            <TextDetail>{details?.height} cm</TextDetail>
+          </ContainerDetail>
 
-        <ContainerDetail>
-          <TitleDetail>Cor dos Olhos:</TitleDetail>
-          <TextDetail>{details?.eye_color}</TextDetail>
-        </ContainerDetail>
+          <ContainerDetail>
+            <TitleDetail>Cor dos Olhos:</TitleDetail>
+            <TextDetail>{details?.eye_color}</TextDetail>
+          </ContainerDetail>
 
-        <ContainerDetail>
-          <TitleDetail>Cor da Pele:</TitleDetail>
-          <TextDetail>{details?.skin_color}</TextDetail>
-        </ContainerDetail>
+          <ContainerDetail>
+            <TitleDetail>Cor da Pele:</TitleDetail>
+            <TextDetail>{details?.skin_color}</TextDetail>
+          </ContainerDetail>
 
-        <ContainerDetail>
-          <TitleDetail>Cor do Cabelo:</TitleDetail>
-          <TextDetail>{details?.hair_color}</TextDetail>
-        </ContainerDetail>
+          <ContainerDetail>
+            <TitleDetail>Cor do Cabelo:</TitleDetail>
+            <TextDetail>{details?.hair_color}</TextDetail>
+          </ContainerDetail>
 
-        <ContainerDetail>
-          <TitleDetail>Ano de Nascimento:</TitleDetail>
-          <TextDetail>{details?.birth_year}</TextDetail>
-        </ContainerDetail>
+          <ContainerDetail>
+            <TitleDetail>Ano de Nascimento:</TitleDetail>
+            <TextDetail>{details?.birth_year}</TextDetail>
+          </ContainerDetail>
 
-        <ContainerDetail>
-          <TitleDetail>Gênero:</TitleDetail>
-          <TextDetail>{details?.gender}</TextDetail>
-        </ContainerDetail>
+          <ContainerDetail>
+            <TitleDetail>Gênero:</TitleDetail>
+            <TextDetail>{details?.gender}</TextDetail>
+          </ContainerDetail>
 
-        <ContainerDetail>
-          <TitleDetail>Planeta Natal:</TitleDetail>
-          <TextDetail>{homeworlds}</TextDetail>
-        </ContainerDetail>
-      </ContainerDetails>
+          <ContainerDetail>
+            <TitleDetail>Planeta Natal:</TitleDetail>
+            <TextDetail>{homeworlds}</TextDetail>
+          </ContainerDetail>
+        </ContainerDetails>
+      </CardDetails>
 
       {isLoading ? (
         <ContainerLoading>
@@ -177,39 +180,39 @@ export default function PeoplesDetails() {
       ) : (
         <>
           {films[0] && (
-            <ContainerInformation>
-              <TitleDetail>Filmes:</TitleDetail>
+            <RelatedItems>
+              <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
               {films.map((film) => (
-                <TextDetail key={film}>{film}</TextDetail>
+                <RelatedItemText key={film}>- {film}</RelatedItemText>
               ))}
-            </ContainerInformation>
+            </RelatedItems>
           )}
 
           {species[0] && (
-            <ContainerInformation>
-              <TitleDetail>Espécies:</TitleDetail>
+            <RelatedItems>
+              <RelatedItemTitle>Espécies Relacionadas:</RelatedItemTitle>
               {species.map((specie) => (
-                <TextDetail key={specie}>{specie}</TextDetail>
+                <RelatedItemText key={specie}>- {specie}</RelatedItemText>
               ))}
-            </ContainerInformation>
+            </RelatedItems>
           )}
 
           {vehicles[0] && (
-            <ContainerInformation>
-              <TitleDetail>Veículos:</TitleDetail>
+            <RelatedItems>
+              <RelatedItemTitle>Veículos Relacionados:</RelatedItemTitle>
               {vehicles.map((vehicle) => (
-                <TextDetail key={vehicle}>{vehicle}</TextDetail>
+                <RelatedItemText key={vehicle}>- {vehicle}</RelatedItemText>
               ))}
-            </ContainerInformation>
+            </RelatedItems>
           )}
 
           {starships[0] && (
-            <ContainerInformation>
-              <TitleDetail>Naves Estelares:</TitleDetail>
+            <RelatedItems>
+              <RelatedItemTitle>Naves Estelares Relacionadas:</RelatedItemTitle>
               {starships.map((starship) => (
-                <TextDetail key={starship}>{starship}</TextDetail>
+                <RelatedItemText key={starship}>- {starship}</RelatedItemText>
               ))}
-            </ContainerInformation>
+            </RelatedItems>
           )}
         </>
       )}
