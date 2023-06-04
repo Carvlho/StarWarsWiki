@@ -1,4 +1,6 @@
 export type RootStackParams = {
+  FilmsList: undefined;
+
   Home: undefined;
 
   PeoplesList: undefined;
