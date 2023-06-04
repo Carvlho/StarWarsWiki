@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
-import AppLoading from "expo-app-loading";
+import * as SplashScreen from "expo-splash-screen";
+import * as Font from "expo-font";
 
 import {
-  useFonts,
   Roboto_400Regular,
   Roboto_500Medium,
   Roboto_700Bold,
@@ -14,14 +15,33 @@ import theme from "./global/styles/theme";
 import { AppRoutes } from "./routes/app.routes";
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    Roboto_400Regular,
-    Roboto_500Medium,
-    Roboto_700Bold,
-  });
+  const [appReady, setAppReady] = useState(false);
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
+  useEffect(() => {
+    (async () => {
+      try {
+        await SplashScreen.preventAutoHideAsync();
+        await Font.loadAsync({
+          RobotoRegular: Roboto_400Regular,
+          RobotoMedium: Roboto_500Medium,
+          RobotoBold: Roboto_700Bold,
+        });
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppReady(true);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (appReady) {
+      SplashScreen.hideAsync();
+    }
+  }, [appReady]);
+
+  if (!appReady) {
+    return null;
   }
 
   return (
