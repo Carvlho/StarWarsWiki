@@ -5,15 +5,19 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import useFetch from "../../hooks/useFetch";
 
-import Header from "../../components/Header";
-import CardItem from "../../components/CardItem";
-import Footer from "../../components/FooterList";
+import {
+  CardItem,
+  Container,
+  Footer,
+  Header,
+  List,
+  Loading,
+  SafeArea,
+} from "../../components";
 
 import { PeoplesProps } from "./interfacePeople";
 
 import { RootStackParams } from "../../utils/RootStackParams";
-
-import { Container, ContainerLoading, List, LoadingIndicator } from "./styles";
 
 type screensStack = NativeStackNavigationProp<RootStackParams>;
 
@@ -69,38 +73,36 @@ export default function PeoplesList() {
   }
 
   return (
-    <Container>
-      <Header title="Pessoas" />
+    <SafeArea>
+      <Container>
+        <Header title="Pessoas" />
 
-      {loading ? (
-        <ContainerLoading testID="loading-view">
-          <LoadingIndicator size="large" />
-        </ContainerLoading>
-      ) : (
-        <Animated.View
-          style={{ width: "100%", opacity: fadeAnim, paddingBottom: 120 }}
-        >
-          <List
-            testID="PeoplesList"
-            keyExtractor={(item, index) => index.toString()}
-            data={listPeoples}
-            renderItem={({ item }: any) => (
-              <CardItem
-                name={item.name}
-                handleDetails={() => handleDetails(item)}
-              />
-            )}
-            ListFooterComponent={() => (
-              <Footer
-                prevPage={handlePreviusPage}
-                nextPage={handleNextPage}
-                currentPage={page}
-                maxPages={maxPages}
-              />
-            )}
-          />
-        </Animated.View>
-      )}
-    </Container>
+        {loading ? (
+          <Loading />
+        ) : (
+          <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
+            <List
+              testID="PeoplesList"
+              keyExtractor={(item, index) => index.toString()}
+              data={listPeoples}
+              renderItem={({ item }: any) => (
+                <CardItem
+                  name={item.name}
+                  handleDetails={() => handleDetails(item)}
+                />
+              )}
+              ListFooterComponent={() => (
+                <Footer
+                  prevPage={handlePreviusPage}
+                  nextPage={handleNextPage}
+                  currentPage={page}
+                  maxPages={maxPages}
+                />
+              )}
+            />
+          </Animated.View>
+        )}
+      </Container>
+    </SafeArea>
   );
 }

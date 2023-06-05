@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, View } from "react-native";
+import { View } from "react-native";
 import { useRoute } from "@react-navigation/native";
 
 import api from "../../services/api";
 
-import Header from "../../components/Header";
-import CardDetails from "../../components/CardDetails";
+import {
+  CardDetails,
+  Container,
+  Header,
+  Loading,
+  SafeArea,
+  Scroll,
+} from "../../components";
 
 import {
   ContainerDetail,
   ContainerDetails,
-  ContainerLoading,
-  ContainerPeoplesDetails,
   RelatedItemText,
   RelatedItemTitle,
   RelatedItems,
@@ -130,92 +134,98 @@ export default function PeoplesDetails() {
   }, []);
 
   return (
-    <ContainerPeoplesDetails>
-      <Header title="Detalhes" />
-      <CardDetails>
-        <Title>{details?.name}</Title>
+    <SafeArea>
+      <Container>
+        <Header title="Detalhes" />
+        <CardDetails>
+          <Title>{details?.name}</Title>
 
-        <ContainerDetails>
-          <ContainerDetail>
-            <TitleDetail>Altura:</TitleDetail>
-            <TextDetail>{details?.height} cm</TextDetail>
-          </ContainerDetail>
+          <ContainerDetails>
+            <ContainerDetail>
+              <TitleDetail>Altura:</TitleDetail>
+              <TextDetail>{details?.height} cm</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Cor dos Olhos:</TitleDetail>
-            <TextDetail>{details?.eye_color}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Cor dos Olhos:</TitleDetail>
+              <TextDetail>{details?.eye_color}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Cor da Pele:</TitleDetail>
-            <TextDetail>{details?.skin_color}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Cor da Pele:</TitleDetail>
+              <TextDetail>{details?.skin_color}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Cor do Cabelo:</TitleDetail>
-            <TextDetail>{details?.hair_color}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Cor do Cabelo:</TitleDetail>
+              <TextDetail>{details?.hair_color}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Ano de Nascimento:</TitleDetail>
-            <TextDetail>{details?.birth_year}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Ano de Nascimento:</TitleDetail>
+              <TextDetail>{details?.birth_year}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Gênero:</TitleDetail>
-            <TextDetail>{details?.gender}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Gênero:</TitleDetail>
+              <TextDetail>{details?.gender}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Planeta Natal:</TitleDetail>
-            <TextDetail>{homeworlds}</TextDetail>
-          </ContainerDetail>
-        </ContainerDetails>
-      </CardDetails>
+            <ContainerDetail>
+              <TitleDetail>Planeta Natal:</TitleDetail>
+              <TextDetail>{homeworlds}</TextDetail>
+            </ContainerDetail>
+          </ContainerDetails>
+        </CardDetails>
 
-      {isLoading ? (
-        <ContainerLoading testID="loading-view">
-          <ActivityIndicator size="large" color="white" />
-        </ContainerLoading>
-      ) : (
-        <View testID="relatedThings-view">
-          {films[0] && (
-            <RelatedItems>
-              <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
-              {films.map((film) => (
-                <RelatedItemText key={film}>- {film}</RelatedItemText>
-              ))}
-            </RelatedItems>
-          )}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <View testID="relatedThings-view" style={{ flex: 1 }}>
+            <Scroll>
+              {films[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
+                  {films.map((film) => (
+                    <RelatedItemText key={film}>- {film}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
 
-          {species[0] && (
-            <RelatedItems>
-              <RelatedItemTitle>Espécies Relacionadas:</RelatedItemTitle>
-              {species.map((specie) => (
-                <RelatedItemText key={specie}>- {specie}</RelatedItemText>
-              ))}
-            </RelatedItems>
-          )}
+              {species[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Espécies Relacionadas:</RelatedItemTitle>
+                  {species.map((specie) => (
+                    <RelatedItemText key={specie}>- {specie}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
 
-          {vehicles[0] && (
-            <RelatedItems>
-              <RelatedItemTitle>Veículos Relacionados:</RelatedItemTitle>
-              {vehicles.map((vehicle) => (
-                <RelatedItemText key={vehicle}>- {vehicle}</RelatedItemText>
-              ))}
-            </RelatedItems>
-          )}
+              {vehicles[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Veículos Relacionados:</RelatedItemTitle>
+                  {vehicles.map((vehicle) => (
+                    <RelatedItemText key={vehicle}>- {vehicle}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
 
-          {starships[0] && (
-            <RelatedItems>
-              <RelatedItemTitle>Naves Estelares Relacionadas:</RelatedItemTitle>
-              {starships.map((starship) => (
-                <RelatedItemText key={starship}>- {starship}</RelatedItemText>
-              ))}
-            </RelatedItems>
-          )}
-        </View>
-      )}
-    </ContainerPeoplesDetails>
+              {starships[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>
+                    Naves Estelares Relacionadas:
+                  </RelatedItemTitle>
+                  {starships.map((starship) => (
+                    <RelatedItemText key={starship}>
+                      - {starship}
+                    </RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
+            </Scroll>
+          </View>
+        )}
+      </Container>
+    </SafeArea>
   );
 }

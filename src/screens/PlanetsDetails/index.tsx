@@ -4,15 +4,18 @@ import { useRoute } from "@react-navigation/native";
 
 import api from "../../services/api";
 
-import Header from "../../components/Header";
-import CardDetails from "../../components/CardDetails";
+import {
+  CardDetails,
+  Container,
+  Header,
+  Loading,
+  SafeArea,
+  Scroll,
+} from "../../components";
 
 import {
   ContainerDetail,
   ContainerDetails,
-  ContainerLoading,
-  ContainerPlanetsDetails,
-  LoadingIndicator,
   RelatedItemText,
   RelatedItemTitle,
   RelatedItems,
@@ -95,79 +98,81 @@ export default function PlanetsDetails() {
   }, [isLoading]);
 
   return (
-    <ContainerPlanetsDetails>
-      <Header title="Detalhes" />
+    <SafeArea>
+      <Container>
+        <Header title="Detalhes" />
 
-      <CardDetails>
-        <Title>{details?.name}</Title>
-        <ContainerDetails>
-          <ContainerDetail>
-            <TitleDetail>Período de rotação:</TitleDetail>
-            <TextDetail>{details?.rotation_period}</TextDetail>
-          </ContainerDetail>
+        <CardDetails>
+          <Title>{details?.name}</Title>
+          <ContainerDetails>
+            <ContainerDetail>
+              <TitleDetail>Período de rotação:</TitleDetail>
+              <TextDetail>{details?.rotation_period}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Diâmetro:</TitleDetail>
-            <TextDetail>{details?.diameter}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Diâmetro:</TitleDetail>
+              <TextDetail>{details?.diameter}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Período orbital:</TitleDetail>
-            <TextDetail>{details?.orbital_period}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Período orbital:</TitleDetail>
+              <TextDetail>{details?.orbital_period}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Clima:</TitleDetail>
-            <TextDetail>{details?.climate}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Clima:</TitleDetail>
+              <TextDetail>{details?.climate}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Gravidade:</TitleDetail>
-            <TextDetail>{details?.gravity}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Gravidade:</TitleDetail>
+              <TextDetail>{details?.gravity}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Terreno:</TitleDetail>
-            <TextDetail>{details?.terrain}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Terreno:</TitleDetail>
+              <TextDetail>{details?.terrain}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Água da superfície:</TitleDetail>
-            <TextDetail>{details?.surface_water}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Água da superfície:</TitleDetail>
+              <TextDetail>{details?.surface_water}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>População:</TitleDetail>
-            <TextDetail>{details?.population}</TextDetail>
-          </ContainerDetail>
-        </ContainerDetails>
-      </CardDetails>
+            <ContainerDetail>
+              <TitleDetail>População:</TitleDetail>
+              <TextDetail>{details?.population}</TextDetail>
+            </ContainerDetail>
+          </ContainerDetails>
+        </CardDetails>
 
-      {isLoading ? (
-        <ContainerLoading>
-          <LoadingIndicator size="large" />
-        </ContainerLoading>
-      ) : (
-        <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
-          {films[0] && (
-            <RelatedItems>
-              <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
-              {films.map((film, index) => (
-                <RelatedItemText key={index}> - {film}</RelatedItemText>
-              ))}
-            </RelatedItems>
-          )}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Animated.View style={{ width: "100%", opacity: fadeAnim, flex: 1 }}>
+            <Scroll>
+              {films[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
+                  {films.map((film, index) => (
+                    <RelatedItemText key={index}> - {film}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
 
-          {residents[0] && (
-            <RelatedItems>
-              <RelatedItemTitle>Residentes Relacionados:</RelatedItemTitle>
-              {residents.map((resident, index) => (
-                <RelatedItemText key={index}> - {resident}</RelatedItemText>
-              ))}
-            </RelatedItems>
-          )}
-        </Animated.View>
-      )}
-    </ContainerPlanetsDetails>
+              {residents[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Residentes Relacionados:</RelatedItemTitle>
+                  {residents.map((resident, index) => (
+                    <RelatedItemText key={index}> - {resident}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
+            </Scroll>
+          </Animated.View>
+        )}
+      </Container>
+    </SafeArea>
   );
 }
