@@ -4,19 +4,21 @@ import { useRoute } from "@react-navigation/native";
 
 import api from "../../services/api";
 
-import Header from "../../components/Header";
-import CardDetails from "../../components/CardDetails";
+import {
+  CardDetails,
+  Container,
+  Header,
+  Loading,
+  SafeArea,
+  Scroll,
+} from "../../components";
 
 import {
   ContainerDetail,
   ContainerDetails,
-  ContainerFilmsDetails,
-  ContainerLoading,
-  LoadingIndicator,
   RelatedItemText,
   RelatedItemTitle,
   RelatedItems,
-  Scroll,
   TextDetail,
   Title,
   TitleDetail,
@@ -74,8 +76,6 @@ export default function FilmsDetails() {
     try {
       const urls = details?.species;
       const speciesTitle: any = [];
-
-      console.log(details?.species);
 
       for (const url of urls) {
         const { data } = await api.get(url);
@@ -156,10 +156,10 @@ export default function FilmsDetails() {
   }, [isLoading]);
 
   return (
-    <ContainerFilmsDetails>
-      <Header title="Detalhes" />
+    <SafeArea>
+      <Container>
+        <Header title="Detalhes" />
 
-      <Scroll contentContainerStyle={{ paddingBottom: 60 }}>
         <CardDetails>
           <Title>{details?.title}</Title>
           <ContainerDetails>
@@ -186,60 +186,60 @@ export default function FilmsDetails() {
         </CardDetails>
 
         {isLoading ? (
-          <ContainerLoading>
-            <LoadingIndicator size="large" />
-          </ContainerLoading>
+          <Loading />
         ) : (
-          <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
-            {peoples[0] && (
-              <RelatedItems>
-                <RelatedItemTitle>Pessoas Relacionadas:</RelatedItemTitle>
-                {peoples.map((people, index) => (
-                  <RelatedItemText key={index}> - {people}</RelatedItemText>
-                ))}
-              </RelatedItems>
-            )}
+          <Animated.View style={{ width: "100%", opacity: fadeAnim, flex: 1 }}>
+            <Scroll>
+              {peoples[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Pessoas Relacionadas:</RelatedItemTitle>
+                  {peoples.map((people, index) => (
+                    <RelatedItemText key={index}> - {people}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
 
-            {planets[0] && (
-              <RelatedItems>
-                <RelatedItemTitle>Planetas Relacionados:</RelatedItemTitle>
-                {planets.map((planet, index) => (
-                  <RelatedItemText key={index}> - {planet}</RelatedItemText>
-                ))}
-              </RelatedItems>
-            )}
+              {planets[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Planetas Relacionados:</RelatedItemTitle>
+                  {planets.map((planet, index) => (
+                    <RelatedItemText key={index}> - {planet}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
 
-            {starships[0] && (
-              <RelatedItems>
-                <RelatedItemTitle>
-                  Naves Estelares Relacionadas:
-                </RelatedItemTitle>
-                {starships.map((starship, index) => (
-                  <RelatedItemText key={index}> - {starship}</RelatedItemText>
-                ))}
-              </RelatedItems>
-            )}
+              {starships[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>
+                    Naves Estelares Relacionadas:
+                  </RelatedItemTitle>
+                  {starships.map((starship, index) => (
+                    <RelatedItemText key={index}> - {starship}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
 
-            {vehicles[0] && (
-              <RelatedItems>
-                <RelatedItemTitle>Veículos Relacionados:</RelatedItemTitle>
-                {vehicles.map((vehicle, index) => (
-                  <RelatedItemText key={index}> - {vehicle}</RelatedItemText>
-                ))}
-              </RelatedItems>
-            )}
+              {vehicles[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Veículos Relacionados:</RelatedItemTitle>
+                  {vehicles.map((vehicle, index) => (
+                    <RelatedItemText key={index}> - {vehicle}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
 
-            {species[0] && (
-              <RelatedItems>
-                <RelatedItemTitle>Espécies Relacionadas:</RelatedItemTitle>
-                {species.map((specie, index) => (
-                  <RelatedItemText key={index}> - {specie}</RelatedItemText>
-                ))}
-              </RelatedItems>
-            )}
+              {species[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Espécies Relacionadas:</RelatedItemTitle>
+                  {species.map((specie, index) => (
+                    <RelatedItemText key={index}> - {specie}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
+            </Scroll>
           </Animated.View>
         )}
-      </Scroll>
-    </ContainerFilmsDetails>
+      </Container>
+    </SafeArea>
   );
 }

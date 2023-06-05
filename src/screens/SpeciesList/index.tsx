@@ -5,18 +5,18 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import useFetch from "../../hooks/useFetch";
 
-import Header from "../../components/Header";
-import CardItem from "../../components/CardItem";
-import Footer from "../../components/FooterList";
+import {
+  CardItem,
+  Container,
+  Footer,
+  Header,
+  Loading,
+  SafeArea,
+} from "../../components";
 
 import { RootStackParams } from "../../utils/RootStackParams";
 
-import {
-  ContainerLoading,
-  ContainerSpecies,
-  List,
-  LoadingIndicator,
-} from "./styles";
+import { List } from "./styles";
 
 interface SpeciesProps {
   name: string;
@@ -76,37 +76,38 @@ export default function SpeciesList() {
   }
 
   return (
-    <ContainerSpecies>
-      <Header title="Espécies" />
+    <SafeArea>
+      <Container>
+        <Header title="Espécies" />
 
-      {loading ? (
-        <ContainerLoading>
-          <LoadingIndicator size="large" />
-        </ContainerLoading>
-      ) : (
-        <Animated.View
-          style={{ width: "100%", opacity: fadeAnim, paddingBottom: 120 }}
-        >
-          <List
-            keyExtractor={(item, index) => index.toString()}
-            data={listSpecies}
-            renderItem={({ item }: any) => (
-              <CardItem
-                name={item.name}
-                handleDetails={() => handleDetails(item)}
-              />
-            )}
-            ListFooterComponent={() => (
-              <Footer
-                prevPage={handlePreviusPage}
-                nextPage={handleNextPage}
-                currentPage={page}
-                maxPages={maxPages}
-              />
-            )}
-          />
-        </Animated.View>
-      )}
-    </ContainerSpecies>
+        {loading ? (
+          <Loading />
+        ) : (
+          <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
+            <List
+              keyExtractor={(item, index) => index.toString()}
+              data={listSpecies}
+              renderItem={({ item }: any) => (
+                <CardItem
+                  name={item.name}
+                  handleDetails={() => handleDetails(item)}
+                />
+              )}
+              ListFooterComponent={() => (
+                <Footer
+                  prevPage={handlePreviusPage}
+                  nextPage={handleNextPage}
+                  currentPage={page}
+                  maxPages={maxPages}
+                />
+              )}
+              contentContainerStyle={{
+                paddingBottom: 50,
+              }}
+            />
+          </Animated.View>
+        )}
+      </Container>
+    </SafeArea>
   );
 }

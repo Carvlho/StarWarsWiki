@@ -4,15 +4,18 @@ import { useRoute } from "@react-navigation/native";
 
 import api from "../../services/api";
 
-import Header from "../../components/Header";
-import CardDetails from "../../components/CardDetails";
+import {
+  CardDetails,
+  Container,
+  Header,
+  Loading,
+  SafeArea,
+  Scroll,
+} from "../../components";
 
 import {
   ContainerDetail,
   ContainerDetails,
-  ContainerLoading,
-  ContainerVehiclesDetails,
-  LoadingIndicator,
   RelatedItemText,
   RelatedItemTitle,
   RelatedItems,
@@ -92,89 +95,89 @@ export default function VehiclesDetails() {
   }, [isLoading]);
 
   return (
-    <ContainerVehiclesDetails>
-      <Header title="Detalhes" />
+    <SafeArea>
+      <Container>
+        <Header title="Detalhes" />
 
-      <CardDetails>
-        <Title>{details?.name}</Title>
-        <ContainerDetails>
-          <ContainerDetail>
-            <TitleDetail>Modelo:</TitleDetail>
-            <TextDetail>{details?.model}</TextDetail>
-          </ContainerDetail>
+        <CardDetails>
+          <Title>{details?.name}</Title>
+          <ContainerDetails>
+            <ContainerDetail>
+              <TitleDetail>Modelo:</TitleDetail>
+              <TextDetail>{details?.model}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Fabricante:</TitleDetail>
-            <TextDetail>{details?.manufacturer}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Fabricante:</TitleDetail>
+              <TextDetail>{details?.manufacturer}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Custo em créditos:</TitleDetail>
-            <TextDetail>{details?.cost_in_credits}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Custo em créditos:</TitleDetail>
+              <TextDetail>{details?.cost_in_credits}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Comprimento:</TitleDetail>
-            <TextDetail>{details?.length}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Comprimento:</TitleDetail>
+              <TextDetail>{details?.length}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Velocidade atmosférica máxima:</TitleDetail>
-            <TextDetail>{details?.max_atmosphering_speed}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Velocidade atmosférica máxima:</TitleDetail>
+              <TextDetail>{details?.max_atmosphering_speed}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Capacidade de carga:</TitleDetail>
-            <TextDetail>{details?.cargo_capacity}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Capacidade de carga:</TitleDetail>
+              <TextDetail>{details?.cargo_capacity}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Consumíveis:</TitleDetail>
-            <TextDetail>{details?.consumables}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Consumíveis:</TitleDetail>
+              <TextDetail>{details?.consumables}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Classe de veículo:</TitleDetail>
-            <TextDetail>{details?.vehicle_class}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Classe de veículo:</TitleDetail>
+              <TextDetail>{details?.vehicle_class}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Nº de Passageiros:</TitleDetail>
-            <TextDetail>{details?.passengers}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Nº de Passageiros:</TitleDetail>
+              <TextDetail>{details?.passengers}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Nº de Equipe:</TitleDetail>
-            <TextDetail>{details?.crew}</TextDetail>
-          </ContainerDetail>
-        </ContainerDetails>
-      </CardDetails>
+            <ContainerDetail>
+              <TitleDetail>Nº de Equipe:</TitleDetail>
+              <TextDetail>{details?.crew}</TextDetail>
+            </ContainerDetail>
+          </ContainerDetails>
+        </CardDetails>
 
-      {isLoading ? (
-        <ContainerLoading>
-          <LoadingIndicator size="large" />
-        </ContainerLoading>
-      ) : (
-        <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
-          {films[0] && (
-            <RelatedItems>
-              <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
-              {films.map((film, index) => (
-                <RelatedItemText key={index}> - {film}</RelatedItemText>
-              ))}
-            </RelatedItems>
-          )}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
+            {films[0] && (
+              <RelatedItems>
+                <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
+                {films.map((film, index) => (
+                  <RelatedItemText key={index}> - {film}</RelatedItemText>
+                ))}
+              </RelatedItems>
+            )}
 
-          {pilots[0] && (
-            <RelatedItems>
-              <RelatedItemTitle>Pilotos Relacionadas:</RelatedItemTitle>
-              {pilots.map((pilot, index) => (
-                <RelatedItemText key={index}> - {pilot}</RelatedItemText>
-              ))}
-            </RelatedItems>
-          )}
-        </Animated.View>
-      )}
-    </ContainerVehiclesDetails>
+            {pilots[0] && (
+              <RelatedItems>
+                <RelatedItemTitle>Pilotos Relacionadas:</RelatedItemTitle>
+                {pilots.map((pilot, index) => (
+                  <RelatedItemText key={index}> - {pilot}</RelatedItemText>
+                ))}
+              </RelatedItems>
+            )}
+          </Animated.View>
+        )}
+      </Container>
+    </SafeArea>
   );
 }

@@ -4,15 +4,18 @@ import { useRoute } from "@react-navigation/native";
 
 import api from "../../services/api";
 
-import Header from "../../components/Header";
-import CardDetails from "../../components/CardDetails";
+import {
+  CardDetails,
+  Container,
+  Header,
+  Loading,
+  SafeArea,
+  Scroll,
+} from "../../components";
 
 import {
   ContainerDetail,
   ContainerDetails,
-  ContainerEspeciesDetails,
-  ContainerLoading,
-  LoadingIndicator,
   RelatedItemText,
   RelatedItemTitle,
   RelatedItems,
@@ -99,84 +102,84 @@ export default function SpeciesDetails() {
   }, [isLoading]);
 
   return (
-    <ContainerEspeciesDetails>
-      <Header title="Detalhes" />
+    <SafeArea>
+      <Container>
+        <Header title="Detalhes" />
 
-      <CardDetails>
-        <Title>{details?.name}</Title>
-        <ContainerDetails>
-          <ContainerDetail>
-            <TitleDetail>Classificação:</TitleDetail>
-            <TextDetail>{details?.classification}</TextDetail>
-          </ContainerDetail>
+        <CardDetails>
+          <Title>{details?.name}</Title>
+          <ContainerDetails>
+            <ContainerDetail>
+              <TitleDetail>Classificação:</TitleDetail>
+              <TextDetail>{details?.classification}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Designação:</TitleDetail>
-            <TextDetail>{details?.designation}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Designação:</TitleDetail>
+              <TextDetail>{details?.designation}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Altura média:</TitleDetail>
-            <TextDetail>{details?.average_height}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Altura média:</TitleDetail>
+              <TextDetail>{details?.average_height}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Cores de pele:</TitleDetail>
-            <TextDetail>{details?.skin_colors}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Cores de pele:</TitleDetail>
+              <TextDetail>{details?.skin_colors}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Cores de cabelo:</TitleDetail>
-            <TextDetail>{details?.hair_colors}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Cores de cabelo:</TitleDetail>
+              <TextDetail>{details?.hair_colors}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Cores dos olhos:</TitleDetail>
-            <TextDetail>{details?.eye_colors}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Cores dos olhos:</TitleDetail>
+              <TextDetail>{details?.eye_colors}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Média de vida:</TitleDetail>
-            <TextDetail>{details?.average_lifespan}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Média de vida:</TitleDetail>
+              <TextDetail>{details?.average_lifespan}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Planeta Natal:</TitleDetail>
-            <TextDetail>{homeworlds}</TextDetail>
-          </ContainerDetail>
+            <ContainerDetail>
+              <TitleDetail>Planeta Natal:</TitleDetail>
+              <TextDetail>{homeworlds}</TextDetail>
+            </ContainerDetail>
 
-          <ContainerDetail>
-            <TitleDetail>Língua:</TitleDetail>
-            <TextDetail>{details?.language}</TextDetail>
-          </ContainerDetail>
-        </ContainerDetails>
-      </CardDetails>
+            <ContainerDetail>
+              <TitleDetail>Língua:</TitleDetail>
+              <TextDetail>{details?.language}</TextDetail>
+            </ContainerDetail>
+          </ContainerDetails>
+        </CardDetails>
 
-      {isLoading ? (
-        <ContainerLoading>
-          <LoadingIndicator size="large" />
-        </ContainerLoading>
-      ) : (
-        <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
-          {films[0] && (
-            <RelatedItems>
-              <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
-              {films.map((film, index) => (
-                <RelatedItemText key={index}> - {film}</RelatedItemText>
-              ))}
-            </RelatedItems>
-          )}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
+            {films[0] && (
+              <RelatedItems>
+                <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
+                {films.map((film, index) => (
+                  <RelatedItemText key={index}> - {film}</RelatedItemText>
+                ))}
+              </RelatedItems>
+            )}
 
-          {peoples[0] && (
-            <RelatedItems>
-              <RelatedItemTitle>Personagens Relacionadas:</RelatedItemTitle>
-              {peoples.map((people, index) => (
-                <RelatedItemText key={index}> - {people}</RelatedItemText>
-              ))}
-            </RelatedItems>
-          )}
-        </Animated.View>
-      )}
-    </ContainerEspeciesDetails>
+            {peoples[0] && (
+              <RelatedItems>
+                <RelatedItemTitle>Personagens Relacionadas:</RelatedItemTitle>
+                {peoples.map((people, index) => (
+                  <RelatedItemText key={index}> - {people}</RelatedItemText>
+                ))}
+              </RelatedItems>
+            )}
+          </Animated.View>
+        )}
+      </Container>
+    </SafeArea>
   );
 }
