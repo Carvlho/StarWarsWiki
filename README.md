@@ -1,10 +1,10 @@
-<h1 align="center" id="project_name">
+<h1 id="project_name">
   <br />
   StarWarsWiki
   <br />
 </h1>
 
-<p align="center">
+<p>
 O app consiste em listar as categorias que existem na API, listar os items conforme as categorias e mostrar os detalhes de cada item.
 </p>
 
