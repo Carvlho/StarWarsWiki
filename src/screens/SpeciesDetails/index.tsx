@@ -159,24 +159,26 @@ export default function SpeciesDetails() {
         {isLoading ? (
           <Loading />
         ) : (
-          <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
-            {films[0] && (
-              <RelatedItems>
-                <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
-                {films.map((film, index) => (
-                  <RelatedItemText key={index}> - {film}</RelatedItemText>
-                ))}
-              </RelatedItems>
-            )}
+          <Animated.View style={{ width: "100%", opacity: fadeAnim, flex: 1 }}>
+            <Scroll>
+              {films[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
+                  {films.map((film, index) => (
+                    <RelatedItemText key={index}> - {film}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
 
-            {peoples[0] && (
-              <RelatedItems>
-                <RelatedItemTitle>Personagens Relacionadas:</RelatedItemTitle>
-                {peoples.map((people, index) => (
-                  <RelatedItemText key={index}> - {people}</RelatedItemText>
-                ))}
-              </RelatedItems>
-            )}
+              {peoples[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Personagens Relacionadas:</RelatedItemTitle>
+                  {peoples.map((people, index) => (
+                    <RelatedItemText key={index}> - {people}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
+            </Scroll>
           </Animated.View>
         )}
       </Container>

@@ -150,24 +150,26 @@ export default function PlanetsDetails() {
         {isLoading ? (
           <Loading />
         ) : (
-          <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
-            {films[0] && (
-              <RelatedItems>
-                <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
-                {films.map((film, index) => (
-                  <RelatedItemText key={index}> - {film}</RelatedItemText>
-                ))}
-              </RelatedItems>
-            )}
+          <Animated.View style={{ width: "100%", opacity: fadeAnim, flex: 1 }}>
+            <Scroll>
+              {films[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
+                  {films.map((film, index) => (
+                    <RelatedItemText key={index}> - {film}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
 
-            {residents[0] && (
-              <RelatedItems>
-                <RelatedItemTitle>Residentes Relacionados:</RelatedItemTitle>
-                {residents.map((resident, index) => (
-                  <RelatedItemText key={index}> - {resident}</RelatedItemText>
-                ))}
-              </RelatedItems>
-            )}
+              {residents[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Residentes Relacionados:</RelatedItemTitle>
+                  {residents.map((resident, index) => (
+                    <RelatedItemText key={index}> - {resident}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
+            </Scroll>
           </Animated.View>
         )}
       </Container>

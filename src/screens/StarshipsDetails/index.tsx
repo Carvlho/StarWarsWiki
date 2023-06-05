@@ -167,24 +167,26 @@ export default function StarshipsDetails() {
         {isLoading ? (
           <Loading />
         ) : (
-          <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
-            {films[0] && (
-              <RelatedItems>
-                <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
-                {films.map((film, index) => (
-                  <RelatedItemText key={index}> - {film}</RelatedItemText>
-                ))}
-              </RelatedItems>
-            )}
+          <Animated.View style={{ width: "100%", opacity: fadeAnim, flex: 1 }}>
+            <Scroll>
+              {films[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Filmes Relacionados:</RelatedItemTitle>
+                  {films.map((film, index) => (
+                    <RelatedItemText key={index}> - {film}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
 
-            {pilots[0] && (
-              <RelatedItems>
-                <RelatedItemTitle>Pilotos Relacionadas:</RelatedItemTitle>
-                {pilots.map((pilot, index) => (
-                  <RelatedItemText key={index}> - {pilot}</RelatedItemText>
-                ))}
-              </RelatedItems>
-            )}
+              {pilots[0] && (
+                <RelatedItems>
+                  <RelatedItemTitle>Pilotos Relacionadas:</RelatedItemTitle>
+                  {pilots.map((pilot, index) => (
+                    <RelatedItemText key={index}> - {pilot}</RelatedItemText>
+                  ))}
+                </RelatedItems>
+              )}
+            </Scroll>
           </Animated.View>
         )}
       </Container>
