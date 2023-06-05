@@ -10,6 +10,7 @@ import {
   Container,
   Footer,
   Header,
+  List,
   Loading,
   SafeArea,
 } from "../../components";
@@ -17,8 +18,6 @@ import {
 import { PeoplesProps } from "./interfacePeople";
 
 import { RootStackParams } from "../../utils/RootStackParams";
-
-import { List } from "./styles";
 
 type screensStack = NativeStackNavigationProp<RootStackParams>;
 
@@ -81,9 +80,7 @@ export default function PeoplesList() {
         {loading ? (
           <Loading />
         ) : (
-          <Animated.View
-            style={{ width: "100%", opacity: fadeAnim, paddingBottom: 120 }}
-          >
+          <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
             <List
               testID="PeoplesList"
               keyExtractor={(item, index) => index.toString()}

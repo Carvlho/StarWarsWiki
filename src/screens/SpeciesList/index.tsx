@@ -10,13 +10,12 @@ import {
   Container,
   Footer,
   Header,
+  List,
   Loading,
   SafeArea,
 } from "../../components";
 
 import { RootStackParams } from "../../utils/RootStackParams";
-
-import { List } from "./styles";
 
 interface SpeciesProps {
   name: string;
@@ -101,9 +100,6 @@ export default function SpeciesList() {
                   maxPages={maxPages}
                 />
               )}
-              contentContainerStyle={{
-                paddingBottom: 50,
-              }}
             />
           </Animated.View>
         )}

@@ -10,13 +10,12 @@ import {
   Container,
   Footer,
   Header,
+  List,
   Loading,
   SafeArea,
 } from "../../components";
 
 import { RootStackParams } from "../../utils/RootStackParams";
-
-import { List } from "./styles";
 
 interface VehiclesProps {
   name: string;
@@ -83,9 +82,7 @@ export default function VehiclesList() {
         {loading ? (
           <Loading />
         ) : (
-          <Animated.View
-            style={{ width: "100%", opacity: fadeAnim, paddingBottom: 120 }}
-          >
+          <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
             <List
               keyExtractor={(item, index) => index.toString()}
               data={listVehicles}

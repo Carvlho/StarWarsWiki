@@ -10,13 +10,12 @@ import {
   Container,
   Footer,
   Header,
+  List,
   Loading,
   SafeArea,
 } from "../../components";
 
 import { RootStackParams } from "../../utils/RootStackParams";
-
-import { List } from "./styles";
 
 interface FilmsProps {
   title: string;
