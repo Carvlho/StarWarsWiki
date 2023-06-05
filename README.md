@@ -16,7 +16,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **[Expo](https://expo.dev)**
 - **[React Native](https://reactnative.dev)**
 - **[React Navigation](https://reactnavigation.org)**
-- **[@expo/vector-icons](https://docs.expo.dev/guides/icons/)**
 - **[Styled Components](https://styled-components.com)**
 
 > Veja o arquivo [package.json](https://github.com/Carvlho/StarWarsWiki/blob/main/package.json)
